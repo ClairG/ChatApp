@@ -13,14 +13,14 @@ namespace ClairG.ChatApp.WebApp.Controllers
     {
         private EFDbContext db = new EFDbContext();
 
-        //Get: Account/Register
+        //Account/Register
         [HttpGet]
         public ActionResult Register()
         {
             return View();
         }
 
-        //Get: Account/Register
+        //Vertify and Create a user
         [HttpPost]
         public ActionResult Register(RegisterVM obj)
         {
@@ -47,8 +47,31 @@ namespace ClairG.ChatApp.WebApp.Controllers
             db.Users.Add(u);
             db.SaveChanges();
 
-            return RedirectToAction("Index", "ChatRoom");
+            //once successfully finish register, go to ChatRoomController-Index
+            return RedirectToAction("Index", "ChatRoom"); 
         }
 
+        //Account/Login
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        //Vertify and Log in
+        [HttpPost]
+        public ActionResult Login(LoginVM obj)
+        {
+            bool UserExistPwdCorrect = db.Users.Any(x => x.Username == obj.Username && x.Password == obj.Password);
+            if (!UserExistPwdCorrect) //if user doesn't exist or pwd is incorrect
+            {
+                ViewBag.LoginMessage = "Invalid username or password";
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "ChatRoom");
+            }
+        }
     }
 }
