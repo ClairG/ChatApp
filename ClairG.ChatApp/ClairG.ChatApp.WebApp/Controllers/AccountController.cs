@@ -74,5 +74,13 @@ namespace ClairG.ChatApp.WebApp.Controllers
                 return RedirectToAction("Index", "ChatRoom");
             }
         }
+
+        //Log out
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            Session["UserId"] = 0;
+            return RedirectToAction("Index","Home");
+        }
     }
 }

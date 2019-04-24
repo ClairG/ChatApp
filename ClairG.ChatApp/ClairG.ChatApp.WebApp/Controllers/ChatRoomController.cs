@@ -17,7 +17,12 @@ namespace ClairG.ChatApp.WebApp.Controllers
         //ChatRoom/Index
         public ActionResult Index()
         {
-            var comments = db.Comments.Include(x => x.Replies).ToList();
+            var userId = Convert.ToInt32(Session["UserId"]);
+            if (userId == 0)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var comments = db.Comments.Include(x => x.Replies).OrderByDescending(x => x.CreatedDateTime).ToList();
             return View(comments);
         }
 
