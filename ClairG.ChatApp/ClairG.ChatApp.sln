@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClairG.ChatApp", "ClairG.ChatApp\ClairG.ChatApp.csproj", "{9B3015CA-EE14-46C4-ABEA-673E37A8BF41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClairG.ChatApp.WebApp", "ClairG.ChatApp.WebApp\ClairG.ChatApp.WebApp.csproj", "{0ADD042B-FADB-4EB0-97C6-610F945D188A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClairG.ChatApp.Domain", "ClairG.ChatApp.Domain\ClairG.ChatApp.Domain.csproj", "{EE5DE043-E271-406C-AAF2-C5AE79F76EE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClairG.ChatApp.UnitTests", "ClairG.ChatApp.UnitTests\ClairG.ChatApp.UnitTests.csproj", "{48B17F64-F524-4D5F-B336-18CC4A2BC571}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{6A591DF6-046A-4116-81B2-60682429801D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9B3015CA-EE14-46C4-ABEA-673E37A8BF41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B3015CA-EE14-46C4-ABEA-673E37A8BF41}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B3015CA-EE14-46C4-ABEA-673E37A8BF41}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B3015CA-EE14-46C4-ABEA-673E37A8BF41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ADD042B-FADB-4EB0-97C6-610F945D188A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ADD042B-FADB-4EB0-97C6-610F945D188A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ADD042B-FADB-4EB0-97C6-610F945D188A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ADD042B-FADB-4EB0-97C6-610F945D188A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE5DE043-E271-406C-AAF2-C5AE79F76EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE5DE043-E271-406C-AAF2-C5AE79F76EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE5DE043-E271-406C-AAF2-C5AE79F76EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE5DE043-E271-406C-AAF2-C5AE79F76EE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48B17F64-F524-4D5F-B336-18CC4A2BC571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48B17F64-F524-4D5F-B336-18CC4A2BC571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48B17F64-F524-4D5F-B336-18CC4A2BC571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48B17F64-F524-4D5F-B336-18CC4A2BC571}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A591DF6-046A-4116-81B2-60682429801D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A591DF6-046A-4116-81B2-60682429801D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A591DF6-046A-4116-81B2-60682429801D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A591DF6-046A-4116-81B2-60682429801D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
