@@ -12,7 +12,9 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            using(var ctx = new EFDbContext())
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EFDbContext>());
+
+            using (var ctx = new EFDbContext())
             {
                 ctx.Database.Delete();
                 ctx.Database.Create();

@@ -16,6 +16,9 @@ namespace ClairG.ChatApp.Domain.Entities
         [Required]
         public string Text { get; set; }
 
+        [ScaffoldColumn(false)]
+        public DateTime? CreatedDateTime { get; set; }
+
         public int UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual User User { get; set; }

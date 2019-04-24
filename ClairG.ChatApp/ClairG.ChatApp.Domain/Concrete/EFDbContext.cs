@@ -12,7 +12,7 @@ namespace ClairG.ChatApp.Domain.Concrete
     {
         public EFDbContext() : base("connStr")
         {
-            Database.SetInitializer<EFDbContext>(null); 
+            Database.SetInitializer<EFDbContext>(null);
         }
 
         public DbSet<User> Users { get; set; }
