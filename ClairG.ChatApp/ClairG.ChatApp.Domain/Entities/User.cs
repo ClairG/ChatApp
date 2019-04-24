@@ -14,7 +14,7 @@ namespace ClairG.ChatApp.Domain.Entities
         public int Id { get; set; }
 
         [Required, MinLength(5), Index(IsUnique =true), Column(TypeName="VARCHAR")]
-        public string Name { get; set; }
+        public string Username { get; set; }
 
         [Required, MinLength(5), DataType(DataType.Password)]
         public string Password { get; set; }
@@ -25,6 +25,7 @@ namespace ClairG.ChatApp.Domain.Entities
         [ScaffoldColumn(false)]
         public string ImageUrl { get; set; }
 
+        [ScaffoldColumn(false)]
         public DateTime? CreatedDateTime { get; set; }
     }
 }
