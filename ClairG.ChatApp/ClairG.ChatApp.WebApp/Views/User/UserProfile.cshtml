@@ -35,26 +35,34 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ImageUrl)
+            Account Created
         </dt>
 
         <dd>
-            @if (Model.ImageUrl.Length > 0) 
+            @Html.DisplayFor(model => model.CreatedDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        @*<dd>
+            @if (Model.ImageUrl.Length > 0)
             {
-                <img src="@Url.Content(Model.ImageUrl)" alt="No Image" style="height:200px; width:150px" />
+                <img src="@Url.Content(Model.ImageUrl)" alt="No Image" style="height:200px" class="img-responsive" />
             }
             <br /><br />
             @using (Html.BeginForm("UpdatePicture", "User", FormMethod.Post,
-                new { enctype = "multipart/form-data"}))
+                    new { enctype = "multipart/form-data" }))
+            //When you make a POST request, you have to encode the data that forms the body of the request in some way.
+            //use multipart/form-data when your form includes any <input type="file"> elements
             {
                 <input type="file" name="Picture" class="col-sm-2 form-control" />
+                <br /><br />
                 <input type="submit" value="Save Picture" class="btn btn-default" />
             }
-        </dd>
+        </dd>*@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

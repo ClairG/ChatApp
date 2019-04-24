@@ -1,6 +1,9 @@
 ﻿using ClairG.ChatApp.Domain.Concrete;
+using ClairG.ChatApp.Domain.Entities;
+using ClairG.ChatApp.WebApp.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -22,5 +25,44 @@ namespace ClairG.ChatApp.WebApp.Controllers
             //if user is looged in
             return View(db.Users.Find(userId));
         }
+
+        //Update Picture
+        //[HttpPost]
+        //public ActionResult UpdatePicture(PictureVM obj)
+        //{
+        //    int userId = Convert.ToInt32(Session["UserId"]);
+        //    if (userId == 0)
+        //    {
+        //        return RedirectToAction("Login", "Account");
+        //    }
+        //    //if user is looged in
+        //    var file = obj.Picture;
+
+        //    User u = db.Users.Find(userId);
+        //    if (file != null)
+        //    {
+        //        //update the image
+        //        var extension = Path.GetExtension(file.FileName);
+        //        string id_and_extension = userId + extension;
+        //        string imgUrl = "~/Profile_Images/" + id_and_extension;
+        //        u.ImageUrl = imgUrl;
+        //        db.Entry(u).State = System.Data.Entity.EntityState.Modified;
+        //        db.SaveChanges();
+
+        //        var path = Server.MapPath("~/Profile_Images/");
+        //        if (!Directory.Exists(path))
+        //        {
+        //            Directory.CreateDirectory(path);
+        //        }
+        //        //when update new img, delete old img
+        //        if(System.IO.File.Exists(path + id_and_extension))
+        //        {
+        //            System.IO.File.Delete(path + id_and_extension);
+        //        }
+        //        file.SaveAs(path + id_and_extension);
+        //    }
+
+        //    return RedirectToAction("UserProfile");
+        //}
     }
 }
