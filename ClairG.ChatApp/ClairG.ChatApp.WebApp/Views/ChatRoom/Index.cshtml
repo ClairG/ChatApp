@@ -11,6 +11,7 @@
 @foreach (var comment in Model) {
     <tr>
         <td>
+            @*Show all comments*@
             <span style="margin-right:20px; font-size:16px; color:green">
                 @comment.User.Username
             </span>
@@ -21,6 +22,7 @@
                 @comment.CreatedDateTime
             </span>
 
+            @*Show all replies*@
             @foreach (var reply in comment.Replies)
             {
                 <br />
@@ -34,6 +36,17 @@
                     @reply.CreatedDateTime
                 </span>
             }
+
+            @*Post reply*@
+            <br />
+            @using (Html.BeginForm("PostReply", "ChatRoom", FormMethod.Post))
+            {
+                <input type="text" name="Reply" style="width:100%; height:50px; font-size:18px; margin-top:10px" />
+                <br />
+                <input type="hidden" name="CommendId" value="@comment.Id"/>
+                <input type="submit" value="Reply" class="btn btn-success" style="margin-top:10px" />
+            }
+
         </td> 
     </tr>
 }
