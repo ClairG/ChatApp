@@ -1,7 +1,41 @@
-﻿
+﻿@model IEnumerable<ClairG.ChatApp.Domain.Entities.Comment>
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2 class="text-success">Welcome, you are registered</h2>
+<h2 class="text-success text-center">Welcome to Chat Room</h2>
 
+<table class="table text-center">
+
+@foreach (var comment in Model) {
+    <tr>
+        <td>
+            <span style="margin-right:20px; font-size:16px; color:green">
+                @comment.User.Username
+            </span>
+            <span style="font-size:20px">
+                @Html.DisplayFor(modelItem => comment.Text)
+            </span>
+            <span style="font-size:12px; margin-left:20px">
+                @comment.CreatedDateTime
+            </span>
+
+            @foreach (var reply in comment.Replies)
+            {
+                <br />
+                <span style="margin-right:20px; font-size:16px; color:gray">
+                    @reply.User.Username
+                </span>
+                <span style="font-size:18px">
+                    @reply.Text
+                </span>
+                <span style="font-size:12px; margin-left:20px">
+                    @reply.CreatedDateTime
+                </span>
+            }
+        </td> 
+    </tr>
+}
+
+</table>
