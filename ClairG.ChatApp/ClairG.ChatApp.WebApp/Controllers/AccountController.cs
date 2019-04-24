@@ -70,6 +70,7 @@ namespace ClairG.ChatApp.WebApp.Controllers
             }
             else
             {
+                Session["UserId"] = db.Users.Single(x => x.Username == obj.Username).Id; //get UserId, keep log in
                 return RedirectToAction("Index", "ChatRoom");
             }
         }

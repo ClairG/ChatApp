@@ -24,14 +24,24 @@ namespace ClairG.ChatApp.WebApp.Controllers
         //PostReply
         public ActionResult PostReply(ReplyVM obj)
         {
-            Reply r = new Reply();
-            r.CommentId = obj.CommendId;
-            r.Text = obj.Reply;
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                Reply r = new Reply();
+                r.CommentId = obj.CommendId;
+                r.Text = obj.Reply;
+                r.UserId = Convert.ToInt32(Session["UserId"]);
+                r.CreatedDateTime = DateTime.Now;
 
-            db.Replies.Add(r);
-            db.SaveChanges();
+                db.Replies.Add(r);
+                db.SaveChanges();
 
-            return View("Index");
+                return View("Index");
+            }
+
         }
     }
 }

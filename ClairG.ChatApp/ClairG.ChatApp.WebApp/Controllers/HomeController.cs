@@ -10,7 +10,9 @@ namespace ClairG.ChatApp.WebApp.Controllers
     {
         public ActionResult Index()
         {
+            Session["UserId"] = null;
             return View();
+            
         }
 
         public ActionResult About()
