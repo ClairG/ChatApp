@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace ClairG.ChatApp
+namespace ClairG.ChatApp.WebApp
 {
     public class RouteConfig
     {

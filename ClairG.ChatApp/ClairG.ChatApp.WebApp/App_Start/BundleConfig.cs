@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace ClairG.ChatApp
+namespace ClairG.ChatApp.WebApp
 {
     public class BundleConfig
     {

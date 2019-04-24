@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ClairG.ChatApp.Controllers
+namespace ClairG.ChatApp.WebApp.Controllers
 {
     public class HomeController : Controller
     {
