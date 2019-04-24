@@ -6,49 +6,61 @@
 
 <h2 class="text-success text-center">Welcome to Chat Room</h2>
 
+@*Post comment*@
+<br />
+@using (Html.BeginForm("PostComment", "ChatRoom", FormMethod.Post))
+{
+    <input class="pull-right" type="text" name="CommentText" placeholder="Type new comment..."
+           style="width:100%; height:50px; font-size:18px; margin-top:10px" />
+    <br /><br /><br />
+    <input type="submit" value="Post Comment" class="btn btn-success pull-right" style="margin: 5px 0px 10px 0px" />
+}
+
 <table class="table text-center">
-
-@foreach (var comment in Model) {
-    <tr>
-        <td>
-            @*Show all comments*@
-            <span style="margin-right:20px; font-size:16px; color:green">
-                @comment.User.Username
-            </span>
-            <span style="font-size:20px">
-                @Html.DisplayFor(modelItem => comment.Text)
-            </span>
-            <span style="font-size:12px; margin-left:20px">
-                @comment.CreatedDateTime
-            </span>
-
-            @*Show all replies*@
-            @foreach (var reply in comment.Replies)
-            {
-                <br />
-                <span style="margin-right:20px; font-size:16px; color:gray">
-                    @reply.User.Username
+    
+    @foreach (var comment in Model)
+    {
+        <tr>
+            <td>
+                @*Show all comments*@
+                <span style="margin-right:20px; font-size:16px; color:green">
+                    @comment.User.Username
                 </span>
-                <span style="font-size:18px">
-                    @reply.Text
+                <span style="font-size:20px">
+                    @Html.DisplayFor(modelItem => comment.Text)
                 </span>
                 <span style="font-size:12px; margin-left:20px">
-                    @reply.CreatedDateTime
+                    @comment.CreatedDateTime
                 </span>
-            }
 
-            @*Post reply*@
-            <br />
-            @using (Html.BeginForm("PostReply", "ChatRoom", FormMethod.Post))
-            {
-                <input type="text" name="Reply" style="width:100%; height:50px; font-size:18px; margin-top:10px" />
+                @*Show all replies*@
+                @foreach (var reply in comment.Replies)
+                {
+                    <br />
+                    <span style="margin-right:20px; font-size:12px; color:gray">
+                        @reply.User.Username
+                    </span>
+                    <span style="font-size:16px">
+                        @reply.Text
+                    </span>
+                    <span style="font-size:8px; margin-left:20px">
+                        @reply.CreatedDateTime
+                    </span>
+                }
+
+                @*Post reply*@
                 <br />
-                <input type="hidden" name="CommendId" value="@comment.Id"/>
-                <input type="submit" value="Reply" class="btn btn-success" style="margin-top:10px" />
-            }
+                @using (Html.BeginForm("PostReply", "ChatRoom", FormMethod.Post))
+                {
+                    <input type="text" name="Reply" placeholder="Type reply..."
+                           style="width:100%; height:50px; font-size:16px; margin-top:10px" />
+                    <br />
+                    <input type="hidden" name="CommendId" value="@comment.Id" />
+                    <input type="submit" value="Post Reply" class="btn btn-success" style="margin-top:10px" />
+                }
 
-        </td> 
-    </tr>
-}
+            </td>
+        </tr>
+    }
 
 </table>

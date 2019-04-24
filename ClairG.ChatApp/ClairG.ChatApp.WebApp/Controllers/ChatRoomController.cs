@@ -22,9 +22,11 @@ namespace ClairG.ChatApp.WebApp.Controllers
         }
 
         //PostReply
+        [HttpPost]
         public ActionResult PostReply(ReplyVM obj)
         {
-            if (Session["UserId"] == null)
+            var userId = Convert.ToInt32(Session["UserId"]);
+            if (userId == 0)
             {
                 return RedirectToAction("Login", "Account");
             }
@@ -33,15 +35,37 @@ namespace ClairG.ChatApp.WebApp.Controllers
                 Reply r = new Reply();
                 r.CommentId = obj.CommendId;
                 r.Text = obj.Reply;
-                r.UserId = Convert.ToInt32(Session["UserId"]);
+                r.UserId = userId;
                 r.CreatedDateTime = DateTime.Now;
 
                 db.Replies.Add(r);
                 db.SaveChanges();
 
-                return View("Index");
+                return RedirectToAction("Index");
             }
+        }
 
+        //PostComment
+        [HttpPost]
+        public ActionResult PostComment(string CommentText)
+        {
+            var userId = Convert.ToInt32(Session["UserId"]);
+            if (userId == 0)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                Comment c = new Comment();
+                c.Text = CommentText;
+                c.UserId = userId;
+                c.CreatedDateTime = DateTime.Now;
+
+                db.Comments.Add(c);
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
         }
     }
 }
