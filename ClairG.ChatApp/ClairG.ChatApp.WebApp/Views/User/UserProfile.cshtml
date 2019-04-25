@@ -35,33 +35,25 @@
         </dd>
 
         <dt>
-            Account Created
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedDateTime)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.ImageUrl)
         </dt>
 
-        @*<dd>
-            @if (Model.ImageUrl.Length > 0)
+        <dd>
+            @*@if(Model.ImageUrl.Length > 0)*@
+            @*System.NullReferenceException: '未将对象引用设置到对象的实例。'
+            ClairG.ChatApp.Domain.Entities.User.ImageUrl.get returned null.*@
+            @if (Model.ImageUrl != null)  //无法保存图片           
             {
                 <img src="@Url.Content(Model.ImageUrl)" alt="No Image" style="height:200px" class="img-responsive" />
             }
             <br /><br />
             @using (Html.BeginForm("UpdatePicture", "User", FormMethod.Post,
-                    new { enctype = "multipart/form-data" }))
-            //When you make a POST request, you have to encode the data that forms the body of the request in some way.
-            //use multipart/form-data when your form includes any <input type="file"> elements
+                new { enctype = "multipart/form-data" }))
             {
-                <input type="file" name="Picture" class="col-sm-2 form-control" />
-                <br /><br />
-                <input type="submit" value="Save Picture" class="btn btn-default" />
+                <input type="file" name="Picture class=" col-sm-2 form-control"" />
+                <input type="submit" value="Save Image" class="btn btn-default" />
             }
-        </dd>*@
+        </dd>
 
     </dl>
 </div>

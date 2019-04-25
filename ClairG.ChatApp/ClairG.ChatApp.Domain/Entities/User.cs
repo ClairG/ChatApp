@@ -23,7 +23,7 @@ namespace ClairG.ChatApp.Domain.Entities
         public string Email { get; set; }
 
         [ScaffoldColumn(false)]
-        [Display(Name ="Picture")]
+        [Display(Name = "Picture")]
         public string ImageUrl { get; set; }
 
         [ScaffoldColumn(false)]
