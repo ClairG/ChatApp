@@ -41,7 +41,7 @@ namespace ClairG.ChatApp.WebApp.Controllers
             u.Username = obj.Username;
             u.Password = obj.Password;
             u.Email = obj.Email;
-            u.ImageUrl = "";
+            //u.ImageUrl = ""; //if (Model.ImageUrl != null)
             u.CreatedDateTime = DateTime.Now;
 
             db.Users.Add(u);
@@ -71,6 +71,7 @@ namespace ClairG.ChatApp.WebApp.Controllers
             else
             {
                 Session["UserId"] = db.Users.Single(x => x.Username == obj.Username).Id; //get UserId, keep log in
+                Session["ImageUrl"] = db.Users.Single(x => x.Username == obj.Username).ImageUrl;
                 return RedirectToAction("Index", "ChatRoom");
             }
         }

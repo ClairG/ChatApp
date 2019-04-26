@@ -8,7 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.SessionState;
 
 namespace ClairG.ChatApp.WebApp.Controllers
 {
@@ -27,19 +26,6 @@ namespace ClairG.ChatApp.WebApp.Controllers
             //if user is looged in
             return View(db.Users.Find(userId));
         }
-
-        //public class UserLog: IRequiresSessionState
-        //{
-        //    public bool Check(HttpContext context)
-        //    {
-        //        if (Convert.ToInt32(context.Session["UserId"]) == 0)
-        //        {
-        //            return false;
-        //        }
-        //        return true;
-        //    }
-
-        //}
 
         //Update Picture
         [HttpPost]

@@ -13,7 +13,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.Username)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Username)
         </dd>
@@ -21,7 +20,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.Password)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Password)
         </dd>
@@ -29,28 +27,30 @@
         <dt>
             @Html.DisplayNameFor(model => model.Email)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
 
         <dt>
+            Account Created
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDateTime)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.ImageUrl)
         </dt>
-
-        <dd>
-            @*@if(Model.ImageUrl.Length > 0)*@
-            @*System.NullReferenceException: '未将对象引用设置到对象的实例。'
-            ClairG.ChatApp.Domain.Entities.User.ImageUrl.get returned null.*@
-            @if (Model.ImageUrl != null)  //无法保存图片           
+        <dd style="margin-top:15px">
+            @if (Model.ImageUrl != null) //breakpoint
             {
-                <img src="@Url.Content(Model.ImageUrl)" alt="No Image" style="height:200px" class="img-responsive" />
+                <img src="@Url.Content(Model.ImageUrl)" alt="No Image" style="height:200px" class="img-responsive img-circle" />
             }
             <br /><br />
             @using (Html.BeginForm("UpdatePicture", "User", FormMethod.Post,
-                new { enctype = "multipart/form-data" }))
+                new { enctype = "multipart/form-data" })) //breakpoint
             {
-                <input type="file" name="Picture class=" col-sm-2 form-control"" />
+                <input type="file" name="Picture" class="col-sm-2 form-control" />
                 <input type="submit" value="Save Image" class="btn btn-default" />
             }
         </dd>
