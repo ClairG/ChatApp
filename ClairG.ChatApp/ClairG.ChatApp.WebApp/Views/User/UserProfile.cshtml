@@ -46,6 +46,10 @@
             {
                 <img src="@Url.Content(Model.ImageUrl)" alt="No Image" style="height:200px" class="img-responsive img-circle" />
             }
+            else
+            {
+                <img src="@Url.Content("~/Profile_Images/dafault.jpg")" alt="No Image" style="height:45px" class="img-responsive img-circle" />
+            }
             <br /><br />
             @using (Html.BeginForm("UpdatePicture", "User", FormMethod.Post,
                 new { enctype = "multipart/form-data" })) //breakpoint
