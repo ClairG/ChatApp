@@ -7,88 +7,105 @@
 
 <h2 class="text-success text-center">Welcome to Chat Room</h2>
 
-@*Post Comment*@
-<br />
+<div class="well">
 @using (Html.BeginForm("PostComment", "ChatRoom", FormMethod.Post))
 {
-    <span class="pull-right">
-        @*show picture*@
-        @if (Session["ImageUrl"] != null)
-        {
-            <img src="@Url.Content(Session["ImageUrl"].ToString())" alt="No Image" style="height:50px" class="img-responsive img-circle" />
-        }
-        else
-        {
-            <img src="@Url.Content("~/Profile_Images/dafault.jpg")" alt="No Image" style="height:50px" class="img-responsive img-circle" />
-        }
-        @*post comment*@
-        <input type="text" name="CommentText" placeholder="Type new comment..."
-                style="width:100%; height:50px; font-size:18px; margin-top:10px" />
-        <br />
-        <input type="submit" value="Post Comment" class="btn btn-success" style="margin: 5px 0px 10px 0px" />
-</span>
-
-}
-
-<table class="table">
-
-    @foreach (var comment in Model)
-    {
-        <tr>
-            <td>
-                @*Show all comments*@
-                @*replace username with user's picture*@
-                @if (comment.User.ImageUrl != null)
-                {
-                    <img src="@Url.Content(comment.User.ImageUrl)" alt="No Image" style="height:45px" class="img-responsive img-circle" />
-                }
-                else
-                {
-                    <img src="@Url.Content("~/Profile_Images/dafault.jpg")" alt="No Image" style="height:45px" class="img-responsive img-circle" />
-                }
-                @*show comments*@
-                <span style="font-size:20px">
-                    @Html.DisplayFor(modelItem => comment.Text)
-                </span>
-                <span style="font-size:12px; margin-left:20px">
-                    @comment.CreatedDateTime
-                </span>
-
-                @*Show all replies*@
-                @foreach (var reply in comment.Replies)
-                {
-                    <br />
-                    @*replace username with user's picture*@
-                    if (reply.User.ImageUrl != null)
+    <ul class="media-list">
+        <li class="media">
+            <div class="media-left">
+                    @*show picture*@
+                    @if (Session["ImageUrl"] != null)
                     {
-                        <img src="@Url.Content(reply.User.ImageUrl)" alt="No Image" style="height:35px" class="img-responsive img-circle" />
+                        <img src="@Url.Content(Session["ImageUrl"].ToString())" alt="No Image" style="height:64px" class="media-object img-circle" />
                     }
                     else
                     {
-                        <img src="@Url.Content("~/Profile_Images/dafault.jpg")" alt="No Image" style="height:35px" class="img-responsive img-circle" />
+                        <img src="@Url.Content("~/Profile_Images/dafault.jpg")" alt="No Image" style="height:64px" class="media-object img-circle" />
                     }
-                    @*show replies*@
-                    <span style="font-size:16px">
-                        @reply.Text
-                    </span>
-                    <span style="font-size:8px; margin-left:20px">
-                        @reply.CreatedDateTime
-                    </span>
-                }
-
-                @*Post reply*@
+            </div>
+            <div class="media-body">
+                @*post comment*@
+                <input type="text" name="CommentText" placeholder="Type new comment..."
+                       style="width:200%; height:55px; font-size:16px; margin-top:10px" />
                 <br />
-                @using (Html.BeginForm("PostReply", "ChatRoom", FormMethod.Post))
-                {
-                    <input type="text" name="Reply" placeholder="Type reply..."
-                           style="width:100%; height:50px; font-size:16px; margin-top:10px" />
-                    <br />
-                    <input type="hidden" name="CommendId" value="@comment.Id" />
-                    <input type="submit" value="Post Reply" class="btn btn-success" style="margin-top:10px" />
-                }
+                <input type="submit" value="Post Comment" class="btn btn-success" style="margin: 5px 0px 10px 0px" />
+            </div>
+        </li>
+    </ul>
+}
+</div>
 
-            </td>
-        </tr>
-    }
-
-</table>
+<div class="well" style="margin-top:-35px">
+@foreach (var comment in Model)
+{
+    <ul class="media-list">
+        @*Show all comments*@
+        <li class="media">
+            <div class="media-left">
+                    @*comment.picture*@
+                    @if (comment.User.ImageUrl != null)
+                    {
+                        <img src="@Url.Content(comment.User.ImageUrl)" alt="No Image" style="height:64px" class="media-object img-circle" />
+                    }
+                    else
+                    {
+                        <img src="@Url.Content("~/Profile_Images/dafault.jpg")" alt="No Image" style="height:64px" class="media-object img-circle" />
+                    }
+            </div>
+            <div class="media-body">
+                @*comment.username*@
+                <h4 class="media-heading">@Html.DisplayFor(modelItem => comment.User.Username)</h4>
+                @*comment*@
+                <span style="font-size:20px">
+                    @Html.DisplayFor(modelItem => comment.Text)
+                </span>
+                <span style="font-size:12px; margin-left:10px">
+                    @comment.CreatedDateTime
+                </span>
+            </div>
+        </li>
+       @*Show all replies*@
+       @foreach (var reply in comment.Replies)
+        {
+        <li class="media">
+            <div class="media-right">
+                    @*reply.picture*@
+                    @if (reply.User.ImageUrl != null)
+                    {
+                    <img src="@Url.Content(reply.User.ImageUrl)" alt="No Image" style="height:64px" class="media-object img-circle" />
+                    }
+                    else
+                    {
+                    <img src="@Url.Content("~/Profile_Images/dafault.jpg")" alt="No Image" style="height:64px" class="media-object img-circle" />
+                    }
+            </div>
+            <div class="media-body">
+                @*reply.username*@
+                <h4 class="media-heading">@reply.User.Username</h4>
+                @*reply*@
+                <span style="font-size:16px">
+                    @reply.Text
+                </span>
+                <span style="font-size:8px; margin-left:20px">
+                    @reply.CreatedDateTime
+                </span>
+            </div>
+        </li>
+        }
+        @*Post reply*@
+        <li class="media">
+            <div class="media-right">
+                   @using (Html.BeginForm("PostReply", "ChatRoom", FormMethod.Post))
+                    {
+                        <input type="text" name="Reply" placeholder="Type reply..."
+                               style="width:200%; height:55px; font-size:16px; margin-top:10px" />
+                        <br />
+                        <input type="hidden" name="CommendId" value="@comment.Id" />
+                        <input type="submit" value="Post Reply" class="btn btn-success" style="margin-top:10px" />
+                    }
+            </div>
+        </li>
+    </ul>
+    <hr />
+}
+</div>
